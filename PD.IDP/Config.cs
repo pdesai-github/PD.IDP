@@ -25,6 +25,7 @@ public static class Config
                     ClientId ="TEST_CLIENT_ID",
                     AllowedGrantTypes = GrantTypes.Code,
                     RedirectUris={ "https://localhost:7261/signin-oidc" },
+                    PostLogoutRedirectUris={"https://localhost:7261/signout-callback-oidc" },
                     AllowedScopes=
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
@@ -33,7 +34,8 @@ public static class Config
                     ClientSecrets=
                     {
                         new Secret("TestClientSecret".Sha256())
-                    }
+                    },
+                    RequireConsent = true
                 }
             };
 }
