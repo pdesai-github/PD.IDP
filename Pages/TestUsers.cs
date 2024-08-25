@@ -28,14 +28,14 @@ public static class TestUsers
                 new TestUser
                 {
                     SubjectId = "1",
-                    Username = "alice",
-                    Password = "alice",
+                    Username = "Pradip",
+                    Password = "Pradip",
                     Claims =
                     {
-                        new Claim(JwtClaimTypes.Name, "Alice Smith"),
-                        new Claim(JwtClaimTypes.GivenName, "Alice"),
-                        new Claim(JwtClaimTypes.FamilyName, "Smith"),
-                        new Claim(JwtClaimTypes.Email, "AliceSmith@email.com"),
+                        new Claim(JwtClaimTypes.Name, "Pradipkumar Desai"),
+                        new Claim(JwtClaimTypes.GivenName, "Pradipkumar"),
+                        new Claim(JwtClaimTypes.FamilyName, "Desai"),
+                        new Claim(JwtClaimTypes.Email, "PradipDesai@email.com"),
                         new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
                         new Claim(JwtClaimTypes.WebSite, "http://alice.com"),
                         new Claim(JwtClaimTypes.Address, JsonSerializer.Serialize(address), IdentityServerConstants.ClaimValueTypes.Json)
@@ -44,14 +44,14 @@ public static class TestUsers
                 new TestUser
                 {
                     SubjectId = "2",
-                    Username = "bob",
-                    Password = "bob",
+                    Username = "Sunil",
+                    Password = "Sunil",
                     Claims =
                     {
-                        new Claim(JwtClaimTypes.Name, "Bob Smith"),
-                        new Claim(JwtClaimTypes.GivenName, "Bob"),
-                        new Claim(JwtClaimTypes.FamilyName, "Smith"),
-                        new Claim(JwtClaimTypes.Email, "BobSmith@email.com"),
+                        new Claim(JwtClaimTypes.Name, "Sunil Patil"),
+                        new Claim(JwtClaimTypes.GivenName, "Sunil"),
+                        new Claim(JwtClaimTypes.FamilyName, "Patil"),
+                        new Claim(JwtClaimTypes.Email, "SunilPatil@email.com"),
                         new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
                         new Claim(JwtClaimTypes.WebSite, "http://bob.com"),
                         new Claim(JwtClaimTypes.Address, JsonSerializer.Serialize(address), IdentityServerConstants.ClaimValueTypes.Json)
