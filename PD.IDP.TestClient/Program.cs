@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.Net.Http.Headers;
 
 namespace PD.IDP.TestClient
 {
@@ -11,6 +12,14 @@ namespace PD.IDP.TestClient
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddAccessTokenManagement();
+
+            builder.Services.AddHttpClient("TestApiClient", client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:7212");
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Add(HeaderNames.Accept, "application/json");
+            }).AddUserAccessTokenHandler();
 
             builder.Services.AddAuthentication(options => 
             {
@@ -28,6 +37,7 @@ namespace PD.IDP.TestClient
                 //options.Scope.Add("openid");
                 //options.Scope.Add("profile");
                 //options.CallbackPath = new PathString("signin-oidc");
+                options.Scope.Add("TestApi.FullAccess");
                 options.SaveTokens = true;
                 options.GetClaimsFromUserInfoEndpoint = true;
             });

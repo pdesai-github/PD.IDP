@@ -14,7 +14,18 @@ public static class Config
 
     public static IEnumerable<ApiScope> ApiScopes =>
         new ApiScope[]
-            { };
+            {
+                new ApiScope("TestApi.FullAccess")
+            };
+
+    public static IEnumerable<ApiResource> ApiResources =>
+        new ApiResource[]
+            {
+                new ApiResource("TestApi", "Test API")
+                {
+                    Scopes = { "TestApi.FullAccess" }
+                }
+            };
 
     public static IEnumerable<Client> Clients =>
         new Client[]
@@ -29,7 +40,8 @@ public static class Config
                     AllowedScopes=
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "TestApi.FullAccess"
                     },
                     ClientSecrets=
                     {

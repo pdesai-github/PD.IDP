@@ -8,15 +8,18 @@ namespace PD.IDP.TestClient.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IHttpClientFactory httpClientFactory)
         {
-            _logger = logger;
+            _httpClientFactory = httpClientFactory;
         }
 
-        public IActionResult Index()
+        public async Task< IActionResult> Index()
         {
+            var client = _httpClientFactory.CreateClient("TestApiClient");
+            var res = await client.GetAsync("WeatherForecast");
+            var content = await res.Content.ReadAsStringAsync();
             return View();
         }
 
